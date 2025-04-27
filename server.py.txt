@@ -2,7 +2,7 @@ import socket
 import threading
 from collections import defaultdict
 
-# 元组空间，存储键值对
-tuple_space = {}
-# 锁，用于同步对元组空间的访问
-lock = threading.Lock()
+class TupleSpace:
+    def __init__(self):
+        self.tuples = {}
+        self.lock = threading.Lock()
