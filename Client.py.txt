@@ -11,3 +11,15 @@ def send_request(server_host, server_port, request_file):
             if not line:
                 continue
             command, *args = line.split()
+            if command == "PUT":
+                key, value = args
+                request = f"{len(line) + 3} P {key} {value}"
+            elif command == "READ":
+                key = args[0]
+                request = f"{len(line) + 3} R {key}"
+            elif command == "GET":
+                key = args[0]
+                request = f"{len(line) + 3} G {key}"
+            else:
+                print(f"Invalid command: {command}")
+                continue
