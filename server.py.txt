@@ -60,3 +60,5 @@ class TupleSpace:
                 except Exception as e:
                    print(f"Error handling client: {e}")
                    break
+
+         client_socket.close()
