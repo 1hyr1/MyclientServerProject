@@ -23,3 +23,7 @@ def send_request(server_host, server_port, request_file):
             else:
                 print(f"Invalid command: {command}")
                 continue
+
+            client_socket.send(request.encode('utf-8'))
+            response = client_socket.recv(1024).decode('utf-8')
+            print(f"{line}: {response}")
