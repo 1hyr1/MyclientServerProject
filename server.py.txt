@@ -29,3 +29,11 @@ class TupleSpace:
                 return f"OK ({key}, {value}) added"
             else:
                 return f"ERR {key} already exists"
+
+        def handle_client(client_socket, tuple_space):
+    while True:
+        try:
+            request = client_socket.recv(1024).decode('utf-8')
+            if not request:
+                break
+            print(f"Received: {request}")
