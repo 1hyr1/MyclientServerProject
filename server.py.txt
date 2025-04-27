@@ -36,4 +36,7 @@ class TupleSpace:
             request = client_socket.recv(1024).decode('utf-8')
             if not request:
                 break
-            print(f"Received: {request}")
+            print(f"Received: {request}")            parts = request.split()
+            if len(parts) < 3:
+                client_socket.send("ERR Invalid request".encode('utf-8'))
+                continue
