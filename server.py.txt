@@ -55,3 +55,8 @@ class TupleSpace:
                response = tuple_space.put(key,value)
             else:
                response = "ERR Invalid command"
+
+            client_socket.send(response.encode('utf-8'))
+                except Exception as e:
+                   print(f"Error handling client: {e}")
+                   break
