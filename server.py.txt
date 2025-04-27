@@ -80,3 +80,12 @@ class TupleSpace:
         print("Server shutting down")
     finally:
         server_socket.close()
+
+    if __name__ == "__main__":
+    import sys
+    if len(sys.argv) != 2:
+        print("Usage: python server.py <port>")
+        sys.exit(1)
+
+    port = int(sys.argv[1])
+    start_server(port)
