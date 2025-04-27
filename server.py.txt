@@ -6,3 +6,10 @@ class TupleSpace:
     def __init__(self):
         self.tuples = {}
         self.lock = threading.Lock()
+
+            def read(self, key):
+        with self.lock:
+            if key in self.tuples:
+                return f"OK ({key}, {self.tuples[key]}) read"
+            else:
+                return f"ERR {key} does not exist"
