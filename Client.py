@@ -27,3 +27,16 @@ def send_request(server_host, server_port, request_file):
             client_socket.send(request.encode('utf-8'))
             response = client_socket.recv(1024).decode('utf-8')
             print(f"{line}: {response}")
+
+            client_socket.close()
+
+        if __name__ == "__main__":
+             if len(sys.argv) != 4:
+               print("Usage: python client.py <server_host> <server_port> <request_file>")
+               sys.exit(1)
+
+             server_host = sys.argv[1]
+             server_port = int(sys.argv[2])
+             request_file = sys.argv[3]
+
+             send_request(server_host, server_port, request_file)
