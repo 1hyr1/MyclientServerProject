@@ -76,12 +76,10 @@ def handle_client(client_socket, tuple_space):
             if len(parts) < 3:
                 client_socket.send("ERR Invalid request".encode('utf-8'))
                 continue
-
             msg_len = int(parts[0])
             command = parts[1]
             key = parts[2]
             value = " ".join(parts[3:]) if len(parts) > 3 else None
-
             if command == "R":
                 response = tuple_space.read(key)
             elif command == "G":
@@ -90,12 +88,10 @@ def handle_client(client_socket, tuple_space):
                 response = tuple_space.put(key, value)
             else:
                 response = "ERR Invalid command"
-
             client_socket.send(response.encode('utf-8'))
         except Exception as e:
             print(f"Error handling client: {e}")
             break
-
     client_socket.close()
 
 def start_server(port):
@@ -104,7 +100,6 @@ def start_server(port):
     server_socket.bind(('0.0.0.0', port))
     server_socket.listen(5)
     print(f"Server listening on port {port}")
-
     try:
         while True:
             client_socket, addr = server_socket.accept()
